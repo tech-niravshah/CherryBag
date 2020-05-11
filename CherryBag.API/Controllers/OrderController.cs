@@ -8,6 +8,7 @@ using CherryBag.Service.Interface;
 using CherryBag.Service;
 using CherryBag.Service.Model;
 using System.Net;
+using CherryBag.Service.Model;
 
 namespace CherryBag.API.Controllers
 {
@@ -16,9 +17,12 @@ namespace CherryBag.API.Controllers
     public class OrderController : ControllerBase
     {
         private IOrderService _orderService;
-        public OrderController(IOrderService orderService)
+        private IPartyService _partyService;
+
+        public OrderController(IOrderService orderService, IPartyService partyService)
         {
             _orderService = orderService;
+            _partyService = partyService;
         }
 
         [HttpPost]
@@ -28,6 +32,21 @@ namespace CherryBag.API.Controllers
             try
             {
                 _orderService.AddOrder(orderModel);
+                return Ok(new { Success = true, data = "Success" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.InnerException);
+            }
+        }
+
+        [HttpPost]
+        [Route("AddOrderWithParty")]
+        public ActionResult AddOrderWithParty(OrderPartyModel orderPartyModel)
+        {
+            try
+            {
+                _orderService.AddOrderWithParty(orderPartyModel);
                 return Ok(new { Success = true, data = "Success" });
             }
             catch (Exception ex)

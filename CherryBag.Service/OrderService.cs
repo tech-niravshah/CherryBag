@@ -24,5 +24,14 @@ namespace CherryBag.Service
             var order = _mapper.Map<OrderMaster>(orderModel);
             _repo.AddOrder(order);
         }
+
+        public void AddOrderWithParty(OrderPartyModel orderPartyModel)
+        {
+            var userAddress = _mapper.Map<UserAddress>(orderPartyModel.PartyModel.PartyAddressModel);
+            var party = _mapper.Map<PartyMaster>(orderPartyModel.PartyModel);
+            var order = _mapper.Map<OrderMaster>(orderPartyModel.OrderModel);
+
+            _repo.AddOrderWithParty(order, party, userAddress);
+        }
     }
 }

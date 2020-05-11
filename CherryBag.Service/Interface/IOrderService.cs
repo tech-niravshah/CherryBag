@@ -9,5 +9,7 @@ namespace CherryBag.Service.Interface
     public interface IOrderService
     {
         public void AddOrder(OrderModel orderMaster);
+
+        public void AddOrderWithParty(OrderPartyModel orderPartyModel);
     }
 }
