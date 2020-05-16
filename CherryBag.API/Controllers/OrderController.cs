@@ -46,7 +46,7 @@ namespace CherryBag.API.Controllers
         {
             try
             {
-                _orderService.AddOrderWithParty(orderPartyModel);
+                _orderService.AddOrderWithParty(orderPartyModel); 
                 return Ok(new { Success = true, data = "Success" });
             }
             catch (Exception ex)
