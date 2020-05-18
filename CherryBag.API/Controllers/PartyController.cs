@@ -37,6 +37,21 @@ namespace CherryBag.API.Controllers
         }
 
         [HttpPost]
+        [Route("updateparty")]
+        public ActionResult UpdateParty(PartyModel partyModel)
+        {
+            try
+            {
+                _partyService.UpdateParty(partyModel);
+                return Ok(new { Success = true, data = "Success" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new { Success = false, data = "Internal Server Error", Message = ex.Message });
+            }
+        }
+
+        [HttpPost]
         [Route("addpartyaddress")]
         public ActionResult AddPartyAddress(PartyAddressModel partyAddressModel)
         {
@@ -57,6 +72,21 @@ namespace CherryBag.API.Controllers
         {
             var partyList = _partyService.GetAllParties();
             return Ok(new { Success = true, data = partyList });
+        }
+
+        [HttpPost]
+        [Route("updatepartyaddress")]
+        public ActionResult UpdatePartyAddress(PartyAddressModel partyAddressModel)
+        {
+            try
+            {
+                _partyService.UpdatePartyAddress(partyAddressModel);
+                return Ok(new { Success = true, data = "Success" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new { Success = false, data = "Internal Server Error", Message = ex.Message });
+            }
         }
     }
 }

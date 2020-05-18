@@ -32,5 +32,11 @@ namespace CherryBag.Service
             var product = _mapper.Map<ProductMaster>(productModel);
             return _repo.AddProduct(product);
         }
+
+        public bool UpdateProduct(ProductModel productModel)
+        {
+            var product = _mapper.Map<ProductMaster>(productModel);
+            return _repo.UpdateProduct(product);
+        }
     }
 }

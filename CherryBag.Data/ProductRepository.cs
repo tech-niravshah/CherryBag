@@ -34,5 +34,20 @@ namespace CherryBag.Data
                 return false;
             }
         }
+
+        public bool UpdateProduct(ProductMaster productMaster)
+        {
+            try
+            {
+                _context.ProductMaster.Update(productMaster);
+                _context.SaveChanges();
+                return true;
+            }
+
+            catch (Exception exception)
+            {
+                return false;
+            }
+        }
     }
 }

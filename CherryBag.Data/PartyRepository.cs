@@ -21,6 +21,20 @@ namespace CherryBag.Data
             _context.SaveChanges();
         }
 
+        public bool UpdateParty(PartyMaster partyMaster)
+        {
+            try
+            {
+                _context.Update(partyMaster);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public void AddPartyAddress(UserAddress userAddress)
         {
             _context.Add(userAddress);
@@ -45,6 +59,21 @@ namespace CherryBag.Data
 
             return partyList;
 
+        }
+
+        public bool UpdatePartyAddress(UserAddress partyAddressModel)
+        {
+            try
+            {
+                _context.Update(partyAddressModel);
+                _context.SaveChanges();
+                return true;
+            }
+
+            catch(Exception exception)
+            {
+                return false;
+            }
         }
     }
 }

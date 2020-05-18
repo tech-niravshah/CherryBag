@@ -12,5 +12,9 @@ namespace CherryBag.Service.Interface
         public void AddPartyAddress(PartyAddressModel partyAddressModel);
 
         public List<PartyModel> GetAllParties();
+
+        public bool UpdateParty(PartyModel partyModel);
+
+        public bool UpdatePartyAddress(PartyAddressModel partyAddressModel);
     }
 }

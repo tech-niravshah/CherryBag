@@ -33,5 +33,13 @@ namespace CherryBag.API.Controllers
             var result = _productService.AddProduct(productModel);
             return Ok(new { Success = true, data = result });
         }
+
+        [HttpPost]
+        [Route("updateproduct")]
+        public ActionResult UpdateProduct(ProductModel productModel)
+        {
+            var result = _productService.UpdateProduct(productModel);
+            return Ok(new { Success = true, data = result });
+        }
     }
 }

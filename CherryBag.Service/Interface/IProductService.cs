@@ -9,5 +9,8 @@ namespace CherryBag.Service.Interface
     {
         public List<ProductModel> GetProducts();
         public bool AddProduct(ProductModel productModel);
+
+        public bool UpdateProduct(ProductModel productModel);
+
     }
 }
