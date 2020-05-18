@@ -29,5 +29,12 @@ namespace CherryBag.Service
             var partyAddress = _mapper.Map<UserAddress>(partyAddressModel);
             _repo.AddPartyAddress(partyAddress);
         }
+
+        public List<PartyModel> GetAllParties()
+        {
+            var partyList = _repo.GetAllParties();
+            var parties = _mapper.Map<List<PartyModel>>(partyList);
+            return parties;
+        }
     }
 }

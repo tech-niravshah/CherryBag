@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using CherryBag.Service.Interface;
+using CherryBag.Data.DB;
 
 namespace CherryBag.Service
 {
@@ -24,6 +25,12 @@ namespace CherryBag.Service
             var products = _repo.GetProducts();
             var productList = _mapper.Map<List<ProductModel>>(products);
             return productList;
+        }
+
+        public bool AddProduct(ProductModel productModel)
+        {
+            var product = _mapper.Map<ProductMaster>(productModel);
+            return _repo.AddProduct(product);
         }
     }
 }

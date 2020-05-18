@@ -13,5 +13,7 @@ namespace CherryBag.Service.Model
         public string Email { get; set; }
 
         public PartyAddressModel PartyAddressModel { get; set; }
+
+        public List<PartyAddressModel> UserAddress { get; set; }
     }
 }

@@ -19,5 +19,20 @@ namespace CherryBag.Data
         {
             return _context.ProductMaster.ToList();
         }
+
+        public bool AddProduct(ProductMaster productMaster)
+        {
+            try
+            {
+                _context.ProductMaster.Add(productMaster);
+                _context.SaveChanges();
+                return true;
+            }
+
+            catch(Exception exception)
+            {
+                return false;
+            }
+        }
     }
 }

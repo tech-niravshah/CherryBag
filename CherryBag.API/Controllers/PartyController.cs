@@ -45,10 +45,18 @@ namespace CherryBag.API.Controllers
                 _partyService.AddPartyAddress(partyAddressModel);
                 return Ok(new { Success = true, data = "Success" });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, new { Success = false, data = "Internal Server Error", Message = ex.Message });
             }
+        }
+
+        [HttpGet]
+        [Route("Getallparties")]
+        public ActionResult GetAllParties()
+        {
+            var partyList = _partyService.GetAllParties();
+            return Ok(new { Success = true, data = partyList });
         }
     }
 }
